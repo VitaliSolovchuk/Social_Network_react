@@ -1,0 +1,10 @@
+
+.header {
+    grid-area: h;
+    background: #007241;
+}
+
+.header div.headerImg img {
+    max-height: 100px;
+    max-width: 200px;
+}

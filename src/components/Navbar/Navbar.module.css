@@ -1,0 +1,18 @@
+
+.navigation {
+    grid-area: n;
+    background: #00AF64;
+}
+
+.item {
+    color: white;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a.activeLinc {
+    color: black;
+}

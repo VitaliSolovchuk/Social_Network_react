@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const Dialogs = () => {
 
-	let dialogsData = [
+	let dialogs = [
 		{id: 1, name: 'Dmitriy'},
 		{id: 2, name: 'Andrey'},
 		{id: 3, name: 'Romka'},
@@ -13,7 +13,10 @@ const Dialogs = () => {
 		{id: 5, name: 'Pete'},
 	]
 
-	let messageData = [
+	let dialogsElements = dialogs
+		.map(d => <DialogItem name={d.name} id={d.id}/>)
+
+	let message = [
 		{id: 1, message: 'Hi'},
 		{id: 2, message: 'How is your live'},
 		{id: 3, message: 'way'},
@@ -21,17 +24,16 @@ const Dialogs = () => {
 		{id: 5, message: 'yo yo'},
 	]
 
+	let messageElements = message
+		.map(m => <Massage massage={m.message}/>)
+
 	return (
 		<div className={style.dialogs}>
 			<div className={style.dialogsItem}>
-				<DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-				<DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-				<DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
+				{dialogsElements}
 			</div>
 			<div className={style.messages}>
-				<Massage massage={messageData[0].message}/>
-				<Massage massage={messageData[1].message}/>
-				<Massage massage={messageData[2].message}/>
+				{messageElements}
 			</div>
 		</div>
 	)
@@ -49,7 +51,7 @@ const DialogItem = (props) => {
 }
 
 const Massage = (props) => {
-	return(
+	return (
 		<div className={style.message}>{props.massage}</div>
 	)
 }

@@ -1,17 +1,16 @@
 import style from './Post.module.css'
+import React from "react";
 
 const Post = (props) => {
 	return (
 		<div className={style.item}>
 			<div>
-				<img
+				<img alt='аватарка'
 					src='https://newsterra.net/upload/catalog/ru/o-chem-govorit-avatarka-profilya-obyasnyayut-psihologi_5ef1a814b8d06.jpg'/>
-			</div>
-			<div>
 				{props.message}
 			</div>
-			<div>
-				<span>like</span>
+			<div className={style.like}>
+				{props.likesCount}<span> like</span>
 			</div>
 		</div>
 	)

@@ -2,22 +2,30 @@ import style from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+
+	let postsData = [
+		{id:1, message:'I live with my parents.', likesCount: 3},
+		{id:2, message:'Tonight he’s going out with his girlfriend.', likesCount: 0},
+		{id:3, message:'I watch special programmes on the television and work at home.', likesCount: 13},
+		{id:4, message:'Hi, my name is Vitaliy and I come from Australia.', likesCount: 1},
+	]
+
 	return (
 		<div className={style.postsBlock}>
 			<h3>My posts</h3>
 			<div>
 				<div>
-					<textarea></textarea>
+					<textarea>Пустой</textarea>
 				</div>
 				<div>
 					<button>add post</button>
 				</div>
 			</div>
 			<div className={style.posts}>
-				<Post message='I live with my parents.'/>
-				<Post message='Tonight he’s going out with his girlfriend.'/>
-				<Post message='I watch special programmes on the television and work at home.'/>
-				<Post message='Hi, my name is Vitaliy and I come from Australia.'/>
+				<Post message={postsData[0].message} likesCount={postsData[0].likesCount}/>
+				<Post message={postsData[1].message} likesCount={postsData[1].likesCount}/>
+				<Post message={postsData[2].message} likesCount={postsData[2].likesCount}/>
+				<Post message={postsData[3].message} likesCount={postsData[3].likesCount}/>
 			</div>
 		</div>
 	)

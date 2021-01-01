@@ -1,5 +1,4 @@
 import React from "react";
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
@@ -7,8 +6,9 @@ import Footer from "./components/Footer/Footer";
 import Profile from "./components/Сontent/Profile/Profile";
 import Dialogs from "./components/Сontent/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
+/*import logo from './logo.svg';*/
 
-function App() {
+function App(props) {
 	return (
 		<BrowserRouter>
 			<div className="app-wrapper">
@@ -29,8 +29,9 @@ function App() {
 				<Header/>
 				<Navbar/>
 				<div className='app-wrapper-content'>
-					<Route exact path='/profile' component={Profile}/>
-					<Route path='/dialogs' component={Dialogs}/>
+					{/* <Route exact path='/profile' component={Profile}/>*/}
+					<Route exact path='/profile' render={ () => <Profile posts={props.posts}/>}/>
+					<Route path='/dialogs' render={ () => <Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
 				</div>
 				<Footer/>
 			</div>

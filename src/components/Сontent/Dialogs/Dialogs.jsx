@@ -3,28 +3,13 @@ import style from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 
 
-const Dialogs = () => {
+const Dialogs = (props) => {
 
-	let dialogs = [
-		{id: 1, name: 'Dmitriy'},
-		{id: 2, name: 'Andrey'},
-		{id: 3, name: 'Romka'},
-		{id: 4, name: 'Sveta'},
-		{id: 5, name: 'Pete'},
-	]
 
-	let dialogsElements = dialogs
+	let dialogsElements = props.dialogs
 		.map(d => <DialogItem name={d.name} id={d.id}/>)
 
-	let message = [
-		{id: 1, message: 'Hi'},
-		{id: 2, message: 'How is your live'},
-		{id: 3, message: 'way'},
-		{id: 4, message: 'yo'},
-		{id: 5, message: 'yo yo'},
-	]
-
-	let messageElements = message
+	let messageElements = props.messages
 		.map(m => <Massage massage={m.message}/>)
 
 	return (

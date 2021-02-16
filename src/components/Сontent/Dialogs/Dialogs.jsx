@@ -6,10 +6,10 @@ import {NavLink} from "react-router-dom";
 const Dialogs = (props) => {
 
 
-	let dialogsElements = props.state.dialogs
+	let dialogsElements = props.dialogsPage.dialogs
 		.map(d => <DialogItem name={d.name} id={d.id}/>)
 
-	let messageElements = props.state.messages
+	let messageElements = props.dialogsPage.messages
 		.map(m => <Massage massage={m.message}/>)
 
 	return (

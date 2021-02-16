@@ -16,9 +16,9 @@ function App(props) {
 				<div className='app-wrapper-content'>
 					{/* <Route exact path='/profile' component={Profile}/>*/}
 					<Route exact path='/profile'
-					       render={ () => <Profile profilePage={props.state.profilePage} dispatch={props.dispatch}/>}/>
+					       render={ () => <Profile state={props.state.profilePage} dispatch={props.dispatch}/>}/>
 					<Route path='/dialogs'
-					       render={ () => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
+					       render={ () => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
 				</div>
 				<Footer/>
 			</div>

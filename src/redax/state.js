@@ -1,3 +1,6 @@
+import {dialogsReducer} from "./dialogs-reducer";
+import {profileReducer} from "./profile-reducer";
+
 let store = {
 	_state: {
 		profilePage: {
@@ -24,26 +27,13 @@ let store = {
 				{id: 4, message: 'yo'},
 				{id: 5, message: 'yo yo'},
 			],
+			newMessageBody: '',
 		},
 	},
 	_callSubscriber() {
 		console.log('state change')
 	},
 
-	_addPost() {
-		let newPost = {
-			id: 5,
-			message: this._state.profilePage.newPostText,
-			likesCount: 1,
-		}
-		this._state.profilePage.posts.push(newPost)
-		this._state.profilePage.newPostText = ''
-		this._callSubscriber(this._state)
-	},
-	_updateNewPostText(newText) {
-		this._state.profilePage.newPostText = newText
-		this._callSubscriber(this._state)
-	},
 
 	getState() {
 		return this._state
@@ -53,11 +43,10 @@ let store = {
 	},
 
 	dispatch(action) {
-		if (action.type === 'ADD_POST') {
-			this._addPost()
-		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-			this._updateNewPostText(action.newText)
-		}
+		debugger
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+		this._state.profilePage = profileReducer(this._state.profilePage, action)
+		this._callSubscriber(this._state)
 	},
 
 }

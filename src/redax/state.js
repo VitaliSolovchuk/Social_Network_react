@@ -1,6 +1,5 @@
-
 let store = {
-	_state : {
+	_state: {
 		profilePage: {
 			posts: [
 				{id: 1, message: 'I live with my parents.', likesCount: 3},
@@ -27,11 +26,11 @@ let store = {
 			],
 		},
 	},
-
-	getState(){
-		return this._state
+	_callSubscriber() {
+		console.log('state change')
 	},
-	addPost() {
+
+	_addPost() {
 		let newPost = {
 			id: 5,
 			message: this._state.profilePage.newPostText,
@@ -41,19 +40,27 @@ let store = {
 		this._state.profilePage.newPostText = ''
 		this._callSubscriber(this._state)
 	},
-	updateNewPostText(newText) {
+	_updateNewPostText(newText) {
 		this._state.profilePage.newPostText = newText
 		this._callSubscriber(this._state)
+	},
+
+	getState() {
+		return this._state
 	},
 	subscribe(observer) {
 		this._callSubscriber = observer
 	},
 
-	_callSubscriber() {
-		console.log('state change')
+	dispatch(action) {
+		if (action.type === 'ADD_POST') {
+			this._addPost()
+		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+			this._updateNewPostText(action.newText)
+		}
 	},
-}
 
+}
 
 
 export default store

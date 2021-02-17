@@ -1,26 +1,24 @@
 import React from "react";
 import style from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "../../../redax/dialogs-reducer";
+import DialogItem from "./DialogItem/DialogItem";
+import Massage from "./Message/Massage";
 
 
 const Dialogs = (props) => {
 
-
-	let dialogsElements = props.state.dialogs
+	let newMessageBody = props.newMessageBody
+	let dialogsElements = props.dialogs
 		.map(d => <DialogItem name={d.name} id={d.id}/>)
-	let messageElements = props.state.messages
+	let messageElements = props.messages
 		.map(m => <Massage massage={m.message}/>)
-	let newMessageBody = props.state.newMessageBody
+
 
 	let onSendMessageClick = () => {
-		let action = sendMessageActionCreator()
-		props.dispatch(action)
+		props.sendMessage()
 	}
 	let onNewMessageChange = (event) => {
 		let messageBody = event.target.value
-		let action = updateNewMessageBodyActionCreator(messageBody)
-		props.dispatch(action)
+		props.updateNewMessageBody(messageBody)
 	}
 
 	return (
@@ -45,16 +43,5 @@ const Dialogs = (props) => {
 export default Dialogs
 
 
-const DialogItem = (props) => {
-	return (
-		<div className={style.dialog + ' ' + style.active}>
-			<NavLink to={'/dialogs/' + props.id}> {props.name} </NavLink>
-		</div>
-	)
-}
 
-const Massage = (props) => {
-	return (
-		<div className={style.message}>{props.massage}</div>
-	)
-}
+

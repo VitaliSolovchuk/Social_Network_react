@@ -6,10 +6,10 @@ import Massage from "./Message/Massage";
 
 const Dialogs = (props) => {
 
-	let newMessageBody = props.newMessageBody
-	let dialogsElements = props.dialogs
+	let newMessageBody = props.dialogsPage.newMessageBody
+	let dialogsElements = props.dialogsPage.dialogs
 		.map(d => <DialogItem name={d.name} id={d.id}/>)
-	let messageElements = props.messages
+	let messageElements = props.dialogsPage.messages
 		.map(m => <Massage massage={m.message}/>)
 
 

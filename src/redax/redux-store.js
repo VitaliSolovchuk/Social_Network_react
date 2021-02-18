@@ -4,7 +4,7 @@ import {profileReducer} from "./profile-reducer";
 
 let reducers = combineReducers({
 	dialogsPage: dialogsReducer,
-	profilePage:profileReducer
+	profilePage: profileReducer
 })
 
 let store = createStore(reducers)
